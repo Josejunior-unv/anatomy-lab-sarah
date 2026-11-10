@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-fundo: #f5f4fa;
+  --color-fundo-2: #eeecf7;
+  --color-papel: #ffffff;
+  --color-tinta: #1d1a2b;
+  --color-tinta-2: #4a4660;
+  --color-suave: #7a768f;
+  --color-linha: #e6e3f0;
+  --color-roxo: #7c5cd6;
+  --color-roxo-forte: #5f43b8;
+  --color-lilas: #ede8fc;
+  --color-lilas-2: #dcd3f8;
+  --color-petroleo: #0a9a94;
+  --color-petroleo-forte: #0b6f6c;
+  --color-agua: #def3f1;
+  --color-ok: #1f9d6b;
+  --color-ok-fundo: #e2f5ec;
+  --color-erro: #d2456a;
+  --color-erro-fundo: #fbe7ec;
+  --color-alerta: #b7791f;
+  --color-alerta-fundo: #fbf1dc;
+
+  --shadow-cartao: 0 1px 2px rgba(40, 30, 90, 0.04), 0 8px 24px -12px rgba(60, 40, 130, 0.14);
+  --shadow-flutuante: 0 2px 6px rgba(40, 30, 90, 0.06), 0 24px 48px -20px rgba(60, 40, 130, 0.28);
+}
+
+html {
+  background: var(--color-fundo);
+  color: var(--color-tinta);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(900px 500px at 100% -10%, rgba(124, 92, 214, 0.1), transparent 60%),
+    radial-gradient(700px 420px at -10% 10%, rgba(10, 154, 148, 0.07), transparent 60%),
+    var(--color-fundo);
+  background-attachment: fixed;
+  min-height: 100dvh;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-roxo);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+
+.cartao {
+  background: var(--color-papel);
+  border: 1px solid var(--color-linha);
+  border-radius: 20px;
+  box-shadow: var(--shadow-cartao);
+}
+
+.rolagem-fina { scrollbar-width: thin; scrollbar-color: var(--color-lilas-2) transparent; }
+
+.vira { perspective: 1400px; }
+.vira-interno { transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.vira-interno.virado { transform: rotateY(180deg); }
+.vira-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.vira-verso { transform: rotateY(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
